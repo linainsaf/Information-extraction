@@ -18,7 +18,7 @@ Named Entity Recognition (NER) is an application of Natural Language Processing 
 
 An NER System is capable of discovering entity elements from raw data and determines the category the element belongs to. The system reads the sentence and highlights the important entity elements in the text. NER might be given separate sensitive entities depending on the project. This means that NER systems designed for one project may not be reused for another task.
 
-    \includegraphics[scale=0.25]{Images/ner.png}
+![ner model example](screenshots/ner.png)
 
 For a general entity such as name, location, organization, date and pre-trained library, Stanford NER and Spacy can be used. But for a domain specific entity, an NER model can be trained with custom training data requires lots of human efforts and time.
 <br/>
@@ -107,6 +107,11 @@ Output:
 
 
 Results : 
+
+![ner_custom results](screenshots/ner_custum.png)
+
+PS: Here we added the entity SKILLS.
+
 
 
 <br/>
