@@ -136,7 +136,7 @@ PS:
 Entities available on SpaCy:
 
 
-![Entities available on SpaCy](screenshots/ner_spacy.png)
+![Entities available on SpaCy](screenshots/spacy_ner.png)
 
 
 
