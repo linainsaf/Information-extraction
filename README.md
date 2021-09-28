@@ -1,4 +1,17 @@
-# Entity Extraction / Information Extraction
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Entity Extraction](#entity-extraction)
+  - [What is an NER model](#what-is-an-ner-model)
+  - [What is SpaCy](#what-is-spacy)
+  - [Which learning algorithm SpaCy uses](#which-learning-algorithm-spacy-uses)
+  - [Fine tuning SpaCy algorithms](#fine-tuning-spacy-algorithms)
+  - [What is a phrase matcher](#what-is-a-phrase-matcher)
+- [How the code works](#how-the-code-works)
+
+
+
+
+# Entity Extraction
 
 <br/>
 
@@ -10,20 +23,24 @@ The idea here is to create a custom-made NER model.
 
 <br/>
 
-## What is an NER model ?
+## What is an NER model
 
 <br/>
-Named Entity Recognition (NER) is an application of Natural Language Processing (NLP) that processes and understands large amounts of unstructured human language. Also known as entity identification, entity chunking and entity extraction. NER extraction is the first step in answering questions, retrieving information and topic modeling. There are many models for implementing NER depending on the application need. Here we compare Spacy pre-trained and Stanford NER models. \\
+Named Entity Recognition (NER) is an application of Natural Language Processing (NLP) that processes and understands large amounts of unstructured human language. Also known as entity identification, entity chunking and entity extraction. NER extraction is the first step in answering questions, retrieving information and topic modeling. There are many models for implementing NER depending on the application need. 
+<br/>
 
+<br/>
 
-An NER System is capable of discovering entity elements from raw data and determines the category the element belongs to. The system reads the sentence and highlights the important entity elements in the text. NER might be given separate sensitive entities depending on the project. This means that NER systems designed for one project may not be reused for another task.
+An NER System is capable of discovering entity elements from raw data and determines the category the element belongs to. The system reads the sentence and highlights the important entity elements in the text. NER might be given separate sensitive entities depending on the project. This means that NER systems designed for one project may not be reused for another task. For a general entity such as name, location, organization, date and pre-trained library, Stanford NER and Spacy can be used. But for a domain specific entity, an NER model can be trained with custom training data requires lots of human efforts and time.
+
+Example of Spacy NER model :
 
 ![ner model example](screenshots/ner.png)
 
-For a general entity such as name, location, organization, date and pre-trained library, Stanford NER and Spacy can be used. But for a domain specific entity, an NER model can be trained with custom training data requires lots of human efforts and time.
+
 <br/>
 
-## What is spaCy ? 
+## What is SpaCy 
 
 <br/>
 SpaCy is an open-source software library for advanced natural language processing taks, written in Python and Cython (programming language that aims to be a superset of the Python programming language, designed to give C-like performance with code that is written mostly in Python with optional additional C-inspired syntax). 
@@ -43,12 +60,12 @@ SpaCy main features are :
   - Easy model packaging, deployment and workflow management
 <br/>
 
-## Which learning algorithm does spaCy uses ? 
+## Which learning algorithm SpaCy uses
 
 <br/>
-SpaCy has its own deep learning library called thinc  used under the hood for different NLP models. \\
+SpaCy has its own deep learning library called thinc  used under the hood for different NLP models.For most (if not all) tasks, spaCy uses a deep neural network based on CNN with a few tweaks. 
 
-For most (if not all) tasks, spaCy uses a deep neural network based on CNN with a few tweaks. Specifically for Named Entity Recognition, spacy uses:
+Specifically for Named Entity Recognition, spacy uses:
    
   - A transition based approach borrowed from shift-reduce parsers, which is described in the official documentation 
 
@@ -59,6 +76,7 @@ For most (if not all) tasks, spaCy uses a deep neural network based on CNN with 
       - Predict: spaCy uses a multi layer perceptron for inference.
 
 <br/>
+
 ## Fine tuning SpaCy algorithms  
 <br/>
 Theoretically, when fine-tuning a spaCy model with new entities, you have to make sure the model doesn't forget representations for previously learned entities. The best thing, if possible, is to train a model from scratch, but that was not possible due to lack of data resources of the company. Indeed to train deep learning models from scratch it takes a lot of data. 
@@ -66,7 +84,7 @@ Theoretically, when fine-tuning a spaCy model with new entities, you have to mak
 So, what we are going to do, is that we are going to use the basic NER model found on Spacy, and add to it phrase matchers.
 <br/>
 
-## What is a phrase matcher  ? 
+## What is a phrase matcher
 
 <br/>
 
@@ -110,7 +128,15 @@ Results :
 
 ![ner_custom results](screenshots/ner_custum.png)
 
-PS: Here we added the entity SKILLS.
+PS:
+- Here we added the entity SKILLS and we only highlighted the entities : GPE (from SpaCy), SKILLS, REMOTE and NOT_REMOTE ( from phrasematcher) 
+- With the code available we can add or delete entities if we wanted by just changing the parameter entities_to_match, note also  that we need to provide for each entity a list of keywords to match from.
+- if we want to add other entities that are available on SpaCy NER we just need to change the parameter options to include them. 
+
+Entities available on SpaCy:
+
+
+![Entities available on SpaCy](screenshots/ner_spacy.png)
 
 
 
