@@ -129,9 +129,9 @@ Results :
 ![ner_custom results](screenshots/ner_custum.png)
 
 PS:
-- Here we added the entity SKILLS and we only highlighted the entities : GPE (from SpaCy), SKILLS, REMOTE and NOT_REMOTE ( from phrasematcher) 
+- Here we added the entity SKILLS and we only highlighted the entities : GPE (from SpaCy), SKILLS, REMOTE and NOT_REMOTE (from phrasematcher) 
 - With the code available we can add or delete entities if we wanted by just changing the parameter entities_to_match, note also  that we need to provide for each entity a list of keywords to match from.
-- if we want to add other entities that are available on SpaCy NER we just need to change the parameter options to include them. 
+- If we want to add other entities that are available on SpaCy NER we just need to change the parameter options to include them. 
 
 Entities available on SpaCy:
 
